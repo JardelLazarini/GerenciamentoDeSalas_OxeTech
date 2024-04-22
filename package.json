@@ -1,0 +1,23 @@
+{
+  "name": "gerenciamento_de_salas",
+  "version": "0.0.1",
+  "description": "Gerenciador de salas",
+  "main": "src/bin/server.js",
+  "scripts": {
+    "start": "node src/bin/server.js",
+    "dev": "nodemon src/bin/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jardel",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.2",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "localtoken": "^0.1.2",
+    "mongoose": "^8.3.2",
+    "simple-mongoose-creator": "^0.0.1"
+  }
+}
