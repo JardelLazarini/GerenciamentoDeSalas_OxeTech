@@ -1,65 +1,65 @@
 const Usuario = require('../models/Usuario');
 
-exports.createCliente = async (req, res) => {
+exports.createUsuario = async (req, res) => {
     try {
         const { nome, cpf } = req.body;
-        const cliente = new Usuario({ nome, cpf });
-        await cliente.save();
-        res.status(201).json(cliente);
+        const usuario = new Usuario({ nome, cpf });
+        await usuario.save();
+        res.status(201).json(usuario);
     } catch (error) {
         res.status(400).json({ message: error.message });
     }
 };
 
-exports.listClientes = async (req, res) => {
+exports.listUsuarios = async (req, res) => {
     try {
-        const clientes = await Usuario.find();
-        res.json(clientes);
+        const usuarios = await Usuario.find();
+        res.json(usuarios);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
 };
 
-exports.getClienteById = async (req, res) => {
+exports.getUsuarioById = async (req, res) => {
     try {
-        const cliente = await Usuario.findById(req.params.id);
-        if (cliente === null) {
-            return res.status(404).json({ message: 'Cliente não encontrado' });
+        const usuario = await Usuario.findById(req.params.id);
+        if (usuario === null) {
+            return res.status(404).json({ message: 'Usuário não encontrado' });
         }
-        res.json(cliente);
+        res.json(usuario);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
 };
 
-exports.updateCliente = async (req, res) => {
+exports.updateUsuario = async (req, res) => {
     try {
         const { nome, cpf } = req.body;
-        const cliente = await Usuario.findById(req.params.id);
-        if (cliente === null) {
-            return res.status(404).json({ message: 'Cliente não encontrado' });
+        const usuario = await Usuario.findById(req.params.id);
+        if (usuario === null) {
+            return res.status(404).json({ message: 'Usuário não encontrado' });
         }
         if (nome !== undefined) {
-            cliente.nome = nome;
+            usuario.nome = nome;
         }
         if (cpf !== undefined) {
-            cliente.cpf = cpf;
+            usuario.cpf = cpf;
         }
-        await cliente.save();
-        res.json(cliente);
+        await usuario.save();
+        res.json(usuario);
     } catch (error) {
         res.status(400).json({ message: error.message });
     }
 };
 
-exports.deleteCliente = async (req, res) => {
+exports.deleteUsuario = async (req, res) => {
     try {
-        const cliente = await Usuario.findById(req.params.id);
-        if (cliente === null) {
-            return res.status(404).json({ message: 'Cliente não encontrado' });
+        const usuario = await Usuario.findById(req.params.id);
+        if (usuario === null) {
+            return res.status(404).json({ message: 'Usuário não encontrado' });
         }
-        await cliente.remove();
-        res.json({ message: 'Cliente excluído com sucesso' });
+        await usuario.remove();
+        res.json({ message: 'Usuário excluído com sucesso' });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }

@@ -1,6 +1,6 @@
-const app = require('./src/bin/index');
-const connectDB = require('./src/middleware/connection');
-const keys = require('./src/bin/keys');
+const app = require('./index');
+const connectDB = require('../middleware/connection');
+const keys = require('./keys');
 
 app.listen(keys.server.port, async () => {
     try {

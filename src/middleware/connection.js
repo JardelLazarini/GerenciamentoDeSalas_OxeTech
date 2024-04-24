@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const keys = require('../../keys'); // Certifique-se de que o caminho está correto
+const keys = require('../bin/keys');
 
 const connectDB = async () => {
     try {

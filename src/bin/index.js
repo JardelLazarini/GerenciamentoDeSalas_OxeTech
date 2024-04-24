@@ -5,9 +5,7 @@ const usuarioRoutes = require('../routes/usuarioRoutes');
 const agendamentoRoutes = require('../routes/agendamentoRoutes'); 
 const salaDeReuniaoRoutes = require('../routes/salaDeReuniaoRoutes');
 
-
-
-const app = require('../bin/index');
+const app = express();
 
 //Configurando o parser
 app.use(bp.json({limit: '10mb'}));

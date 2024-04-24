@@ -1,6 +1,6 @@
-const smc = require('simple-mongoose-creator');
+const mongoose = require('mongoose');
 
-smc.smc('agendamentos', {
+const agendamentoSchema = new mongoose.Schema({
     usuario: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'usuarios',
@@ -21,5 +21,4 @@ smc.smc('agendamentos', {
     }
 });
 
-
-module.exports = smc;
+module.exports = mongoose.model('agendamentos', agendamentoSchema);
