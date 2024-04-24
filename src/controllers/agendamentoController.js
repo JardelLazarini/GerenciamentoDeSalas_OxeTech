@@ -1,28 +1,25 @@
 const mongoose = require('mongoose');
 const Agendamento = require('../models/Agendamento');
 
+// Função para criar um novo agendamento
 exports.createAgendamento = async (req, res) => {
     try {
         const { usuario, sala, horario, quantidadePessoas } = req.body;
-
-        // Criando o objeto de agendamento com os IDs convertidos
         const novoAgendamento = new Agendamento({ 
-            usuario: mongoose.Types.ObjectId(usuario), 
-            sala: mongoose.Types.ObjectId(sala), 
+            /*usuario: mongoose.Types.ObjectId(usuario),*/
+            usuario: usuario, 
+            sala: sala,
             horario, 
             quantidadePessoas 
         });
-
-        // Salvando o agendamento
         await novoAgendamento.save();
-        
         res.status(201).json(novoAgendamento);
     } catch (error) {
         res.status(400).json({ message: error.message });
     }
 };
 
-
+// Função para listar todos os agendamentos
 exports.listAgendamentos = async (req, res) => {
     try {
         const agendamentos = await Agendamento.find();
@@ -32,6 +29,7 @@ exports.listAgendamentos = async (req, res) => {
     }
 };
 
+// Função para buscar um agendamento por ID
 exports.getAgendamentoById = async (req, res) => {
     try {
         const agendamento = await Agendamento.findById(req.params.id);
@@ -44,6 +42,7 @@ exports.getAgendamentoById = async (req, res) => {
     }
 };
 
+// Função para atualizar um agendamento por ID
 exports.updateAgendamento = async (req, res) => {
     try {
         const { horario, quantidadePessoas } = req.body;
@@ -64,6 +63,7 @@ exports.updateAgendamento = async (req, res) => {
     }
 };
 
+// Função para excluir um agendamento por ID
 exports.deleteAgendamento = async (req, res) => {
     try {
         const agendamento = await Agendamento.findById(req.params.id);

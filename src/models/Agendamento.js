@@ -1,14 +1,15 @@
 const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
-const agendamentoSchema = new mongoose.Schema({
+const agendamentoSchema = new Schema({
     usuario: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'usuarios',
+        type: String,
+        //ref: 'usuarios',
         required: true
     },
     sala: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'salas', 
+        type: String,
+        //ref: 'salas', 
         required: true
     },
     horario: {
